@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Summary - OOP</title>
+  </head>
+  <body>
+    <pre id="result"></pre>
+
+    <script>
+      class Student {
+        constructor(name, age, listSubject) {
+          this.name = name;
+          this.age = age;
+          this.listSubject = listSubject; // mảng gồm {subject, score}
+        }
+
+        diemTrungBinh() {
+          let sum = 0;
+          for (let i = 0; i < this.listSubject.length; i++) {
+            sum += this.listSubject[i].score;
+          }
+          return Math.round((sum / this.listSubject.length) * 100) / 100;
+        }
+
+        xepLoai() {
+          const avg = this.diemTrungBinh();
+          if (avg >= 8.5) return "Học sinh giỏi";
+          else if (avg >= 7) return "Học sinh khá";
+          else if (avg >= 5) return "Học sinh trung bình";
+          else return "Học sinh yếu";
+        }
+
+        monTotNhat() {
+          let best = this.listSubject[0];
+          for (let i = 1; i < this.listSubject.length; i++) {
+            if (this.listSubject[i].score > best.score) {
+              best = this.listSubject[i];
+            }
+          }
+          return best;
+        }
+
+        monKemNhat() {
+          let worst = this.listSubject[0];
+          for (let i = 1; i < this.listSubject.length; i++) {
+            if (this.listSubject[i].score < worst.score) {
+              worst = this.listSubject[i];
+            }
+          }
+          return worst;
+        }
+
+        getSummary() {
+          const avg = this.diemTrungBinh();
+          const rank = this.xepLoai();
+          const best = this.monTotNhat();
+          const worst = this.monKemNhat();
+
+          return `${this.name} is ${this.age} years old.
+Average score: ${avg} - ${rank}
+Best subject: ${best.subject} (${best.score})
+Weakest subject: ${worst.subject} (${worst.score})`;
+        }
+      }
+
+     
+      const student1 = new Student("Dev", 20, [
+        { subject: "Math", score: 9 },
+        { subject: "English", score: 7.5 },
+        { subject: "Physics", score: 6 },
+        { subject: "Literature", score: 8.5 },
+      ]);
+
+      console.log(student1.getSummary());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bai1</title>
+</head>
+<body>
+  <script>
+    function displayUserInfo(user) {
+      const {
+        name,
+        age,
+        location: { city = "unknown", country = "unknown" } = {},
+        contact: { email = "unknown", phone = "unknown" } = {},
+        job: { title = "unknown", company = "unknown" } = {},
+      } = user;
+
+      return `${name} is ${age} years old, lives in ${city}, works as ${title} at ${company}, and can be contacted via ${email} or ${phone}`;
+    }
+
+    const user1 = {
+      name: "Linh",
+      age: 20
+     
+    };
+
+    console.log(displayUserInfo(user1));
+  </script>
+</body>
+</html>

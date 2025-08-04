@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bai1</title>
+  </head>
+  <body>
+    <script>
+      let phoneBook=[];
+      const addContact=(name,numberphone,email) =>{
+          phoneBook.push({name,numberphone,email});
+          console.log(`da them lh :${name}`);
+
+      };
+      const displayContact=()=>{
+        if (phoneBook.length===0) {
+          console.log("danh ba trong");
+          return;
+          
+        }
+          phoneBook.forEach(({name, numberphone,email})=>
+      console.log(`ten : ${name}, sdt:${numberphone},email:${email}`))
+      }
+      addContact("linh","0233202992", "phamngoclinhtq@gmail.com");
+      displayContact();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bai1</title>
+  </head>
+  <body>
+    <script>
+      function getOrderSummary(products = []) {
+
+  if (!Array.isArray(products) || products.length === 0) {
+    return {
+      totalBeforeDiscount: 0,
+      totalAfterDiscount: 0,
+      details: []
+    };
+  }
+
+  const details = products.map(({ name, price, discount = 0, quantity, bulkDiscount = {} }) => {
+    const { minQuantity = 0, extraDiscount = 0 } = bulkDiscount;
+
+    const originalTotal = price * quantity;
+
+    const appliedExtra = quantity >= minQuantity ? extraDiscount : 0;
+
+    const finalPrice = Math.round(price * (1 - discount) * (1 - appliedExtra));
+
+    const subtotal = finalPrice * quantity;
+
+    return { name, finalPrice, quantity, subtotal, originalTotal };
+  });
+
+  const totalBeforeDiscount = details.reduce((sum, item) => sum + item.originalTotal, 0);
+
+  const totalAfterDiscount = details.reduce((sum, item) => sum + item.subtotal, 0);
+
+  return {
+    totalBeforeDiscount,
+    totalAfterDiscount,
+    details: details.map(({ name, finalPrice, quantity, subtotal }) => ({
+      name,
+      finalPrice,
+      quantity,
+      subtotal
+    }))
+  };
+}
+
+    </script>
+  </body>
+</html>

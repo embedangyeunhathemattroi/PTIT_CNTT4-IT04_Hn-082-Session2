@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bai1</title>
+  </head>
+  <body>
+    <script>
+      //   const typeCOnsole = (param) => {
+      //     //return `console[${param}]("123")`
+      //     ` console.[${param}]("123")`;
+      //     if (param == "eror") {
+      //       console.errot("day la type error");
+      //     } else if (param == "warn") {
+      //       console.warn("day la type warn");
+      //     }
+      //   };
+
+      const typeConsole = (type = "log") => {
+        console[type](`day la type ${type}`);
+      };
+         typeConsole();
+        typeConsole("warn"); //ph goi ham
+         typeConsole("error");
+    </script>
+  </body>
+</html>

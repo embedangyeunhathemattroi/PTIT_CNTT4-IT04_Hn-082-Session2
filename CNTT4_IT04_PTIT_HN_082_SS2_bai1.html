@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bai1</title>
+  </head>
+  <body>
+    <script>
+      // Viết một hàm có tên sum nhận vào một mảng số nguyên và trả về tổng của tất cả các số chẵn trong mảng.
+      function sum(arr) {
+        let total = 0;
+        //     Sử dụng vòng lặp for...of để duyệt qua từng phần tử trong mảng.
+        for (const num of arr) {
+          //     Kiểm tra xem mỗi phần tử có phải là số chẵn hay không.
+
+          if (num % 2 === 0) {
+            total += num;
+          }
+        }
+        return total;
+      }
+
+     console.log(sum([1, 2, 3, 4, 5, 6]));
+    </script>
+  </body>
+</html>
