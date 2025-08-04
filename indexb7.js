@@ -1,4 +1,3 @@
-import { FormatDate } from './formatData.js';
+import { formatDate } from './formatData.js';
 
-const formattedDate = FormatDate(new Date());
-console.log(formattedDate); 
+console.log(formatDate(new Date()));
